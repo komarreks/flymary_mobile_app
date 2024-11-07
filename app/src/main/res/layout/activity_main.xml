@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="20sp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/iconmenu"
+            android:layout_marginRight="10sp"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/iconsetting" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="20sp">
+
+        <ImageButton
+            android:id="@+id/wb_button"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/wildberries_mobile_svg"
+            android:layout_marginRight="10sp"
+            />
+
+        <ImageButton
+            android:id="@+id/heart_button"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/iconheart"
+            android:layout_marginRight="10sp"
+            />
+
+        <ImageButton
+            android:id="@+id/bell_button"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/iconbell"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageButton
+        android:id="@+id/logo_button"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/logo_fm_100__100"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
