@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/start_fragment">
+
+    <fragment
+        android:id="@+id/start_fragment"
+        android:name="ru.flymary.app.presentation.startwindow.StartFragment"
+        tools:layout="@layout/fragment_start" />
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="ru.flymary.app.presentation.SearchWindow.SearchFragment"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/basket_fragment"
+        android:name="ru.flymary.app.presentation.BasketWindow.BasketFragment"
+        tools:layout="@layout/fragment_basket" />
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="ru.flymary.app.presentation.profilewindow.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
