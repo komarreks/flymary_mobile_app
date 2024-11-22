@@ -6,21 +6,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.startwindow.StartFragment">
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="тут будет баннер"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/banner_pager"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/text2"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"/>
+
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="тут каталоги"
-        app:layout_constraintTop_toBottomOf="@id/text1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:dotsColor="@color/black"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="16dp"
+        app:dotsSpacing="4dp"
+        app:dotsWidthFactor="2.5"
+        app:layout_constraintEnd_toEndOf="@+id/banner_pager"
+        app:layout_constraintStart_toStartOf="@+id/banner_pager"
+        app:layout_constraintTop_toBottomOf="@+id/banner_pager"
+        app:progressMode="false"
+        app:selectedDotColor="@color/magenta"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="10sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

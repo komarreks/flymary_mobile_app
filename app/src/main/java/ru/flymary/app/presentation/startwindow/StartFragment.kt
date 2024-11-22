@@ -5,44 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentStartBinding
+import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class StartFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
 
     private var _binding: FragmentStartBinding? = null
     val binding get() = _binding!!.root
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val startModel: StartModel by viewModels()
+    private val mainBannerAdapter = BannerAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentStartBinding.inflate(inflater)
         return binding.rootView
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StartFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        _binding?.bannerPager?.adapter = mainBannerAdapter
+
+        _binding?.dotsIndicator?.setViewPager2(_binding!!.bannerPager)
+
+        startModel.imagesForBanner.onEach {
+            mainBannerAdapter.setLinks(it)
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 }
