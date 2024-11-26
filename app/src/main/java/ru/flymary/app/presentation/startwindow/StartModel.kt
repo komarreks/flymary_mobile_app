@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 class StartModel: ViewModel() {
@@ -12,8 +13,12 @@ class StartModel: ViewModel() {
     private val _imagesForBanner = MutableStateFlow<List<String>>(listOf())
     val imagesForBanner = _imagesForBanner.asStateFlow()
 
+    private val _catalogs = MutableStateFlow<List<CatalogDTO>>(listOf())
+    val catalogs = _catalogs.asStateFlow()
+
     init {
         updateMainBanner()
+        updateCatalogs()
     }
 
     fun updateMainBanner(){
@@ -28,6 +33,11 @@ class StartModel: ViewModel() {
 
             _imagesForBanner.value = links
         }
+    }
 
+    fun updateCatalogs(){
+        viewModelScope.launch {
+            _catalogs.value = RemoteServer.FWS.getCatalogs()
+        }
     }
 }

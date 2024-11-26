@@ -31,8 +31,6 @@ class BannerAdapter: RecyclerView.Adapter<BAVH>() {
             Glide.with(holder.binding.bannerImage).load(it).into(holder.binding.bannerImage)
         }
     }
-
-
 }
 
 class BAVH(val binding: BannerLayoutBinding):  RecyclerView.ViewHolder(binding.root)

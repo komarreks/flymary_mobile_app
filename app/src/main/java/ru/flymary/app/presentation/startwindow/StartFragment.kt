@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentStartBinding
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
+import ru.flymary.app.presentation.startwindow.cataloglist.CatalogListAdapter
 
 
 class StartFragment : Fragment() {
@@ -24,6 +25,7 @@ class StartFragment : Fragment() {
 
     private val startModel: StartModel by viewModels()
     private val mainBannerAdapter = BannerAdapter()
+    private val catalogListAdapter = CatalogListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +42,14 @@ class StartFragment : Fragment() {
 
         _binding?.dotsIndicator?.setViewPager2(_binding!!.bannerPager)
 
+        _binding?.catalogsRecycle?.adapter = catalogListAdapter
+
         startModel.imagesForBanner.onEach {
             mainBannerAdapter.setLinks(it)
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        startModel.catalogs.onEach {
+            catalogListAdapter.update(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 }
