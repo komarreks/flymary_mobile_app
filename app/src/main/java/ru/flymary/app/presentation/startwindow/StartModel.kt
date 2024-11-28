@@ -2,6 +2,7 @@ package ru.flymary.app.presentation.startwindow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -23,7 +24,13 @@ class StartModel: ViewModel() {
 
     fun updateMainBanner(){
         viewModelScope.launch {
-            val imageStringList: MutableList<String> = RemoteServer.FWS.getMainBanner().toMutableList()
+            var imageStringList: List<String> = listOf()
+
+            try {
+                imageStringList = RemoteServer.FWS.getMainBanner()
+            }catch (ex: Exception){
+                imageStringList = listOf("empty")
+            }
 
             val links: MutableList<String> = mutableListOf()
 
@@ -37,7 +44,11 @@ class StartModel: ViewModel() {
 
     fun updateCatalogs(){
         viewModelScope.launch {
-            _catalogs.value = RemoteServer.FWS.getCatalogs()
+            try {
+                _catalogs.value = RemoteServer.FWS.getCatalogs()
+            }catch (ex: Exception){
+                _catalogs.value = listOf()
+            }
         }
     }
 }

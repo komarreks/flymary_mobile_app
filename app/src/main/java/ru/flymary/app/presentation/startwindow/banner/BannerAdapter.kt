@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ru.flymary.app.R
 import ru.flymary.app.databinding.BannerLayoutBinding
 
 class BannerAdapter: RecyclerView.Adapter<BAVH>() {
@@ -28,7 +29,9 @@ class BannerAdapter: RecyclerView.Adapter<BAVH>() {
         val imageLink = imagesLinks[position]
 
         imageLink?.let {
-            Glide.with(holder.binding.bannerImage).load(it).into(holder.binding.bannerImage)
+            Glide.with(holder.binding.bannerImage)
+                .load(it)
+                .into(holder.binding.bannerImage)
         }
     }
 }

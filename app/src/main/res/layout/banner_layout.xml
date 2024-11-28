@@ -14,5 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars"
-        android:background="@drawable/banner_shape"/>
+        android:background="@drawable/banner_shape"
+        />
 </FrameLayout>

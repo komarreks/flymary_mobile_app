@@ -8,7 +8,20 @@
     <fragment
         android:id="@+id/start_fragment"
         android:name="ru.flymary.app.presentation.startwindow.StartFragment"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_start_fragment_to_catalogFragment"
+            app:destination="@id/catalogFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/start_fragment" />
+        <argument
+            android:name="catalogId"
+            app:argType="string"
+            />
+    </fragment>
     <fragment
         android:id="@+id/search_fragment"
         android:name="ru.flymary.app.presentation.SearchWindow.SearchFragment"
@@ -21,4 +34,8 @@
         android:id="@+id/profile_fragment"
         android:name="ru.flymary.app.presentation.profilewindow.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="ru.flymary.app.presentation.startwindow.catalogwindow.CatalogFragment"
+        tools:layout="@layout/fragment_catalog" />
 </navigation>

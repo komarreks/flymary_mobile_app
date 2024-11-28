@@ -7,16 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
+import ru.flymary.app.App
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentStartBinding
+import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
 import ru.flymary.app.presentation.startwindow.cataloglist.CatalogListAdapter
-
+import ru.flymary.app.values.NavTypes
 
 class StartFragment : Fragment() {
 
@@ -25,7 +26,7 @@ class StartFragment : Fragment() {
 
     private val startModel: StartModel by viewModels()
     private val mainBannerAdapter = BannerAdapter()
-    private val catalogListAdapter = CatalogListAdapter()
+    private val catalogListAdapter = CatalogListAdapter { catalogDTO -> onCatalogClick(catalogDTO) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +38,13 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val casheCleaner = Thread{
+            if (App.FIRST_START){
+                Glide.get(requireContext()).clearDiskCache()
+                App.FIRST_START = false
+            }
+        }.start()
 
         _binding?.bannerPager?.adapter = mainBannerAdapter
 
@@ -51,5 +59,12 @@ class StartFragment : Fragment() {
         startModel.catalogs.onEach {
             catalogListAdapter.update(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun onCatalogClick(catalogDTO: CatalogDTO){
+        val bundle = Bundle()
+        bundle.putString(NavTypes.CATALOG_ID, catalogDTO.id)
+        bundle.putString(NavTypes.CATALOG_NAME, catalogDTO.name)
+        findNavController().navigate(R.id.action_start_fragment_to_catalogFragment, bundle)
     }
 }
