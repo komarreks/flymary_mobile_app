@@ -21,13 +21,13 @@
             android:layout_width="30sp"
             android:layout_height="30sp"
             android:layout_marginRight="10sp"
-            android:background="@drawable/iconmenu" />
+            android:background="@drawable/tg_icon" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/settings_button"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:background="@drawable/iconsetting" />
+            android:background="@drawable/vk_icon" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat

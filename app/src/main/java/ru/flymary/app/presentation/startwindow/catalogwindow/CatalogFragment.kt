@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.databinding.FragmentCatalogBinding
 import ru.flymary.app.values.NavTypes
 
@@ -16,11 +20,15 @@ class CatalogFragment : Fragment() {
     private var _binding:FragmentCatalogBinding? = null
     val binding get() = _binding!!
 
+    private lateinit var  model: CatalogModel
+    private val nodesAdapter = NodeAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             catalogId = it.getString(NavTypes.CATALOG_ID)
             catalogName = it.getString(NavTypes.CATALOG_NAME)
+            catalogId?.let { id -> model = CatalogModel(id) }
         }
     }
 
@@ -34,7 +42,12 @@ class CatalogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.text.text = catalogName
+        binding.catalogName.text = catalogName
+        binding.nodes.adapter = nodesAdapter
+
+        model.nodes.onEach {
+            nodesAdapter.setNodes(it)
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroy() {
