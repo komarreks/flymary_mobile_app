@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.ProductDTO
 
 const val BASE_URL = "http://10.24.10.10:8080"
 
@@ -40,4 +41,10 @@ interface FLYMARY_WEB_SERVER{
 
     @GET(value = "api/node/root")
     suspend fun getRoot(@Query("catalog") id: String): List<NodeDTO>
+
+    @GET(value = "api/node/goods")
+    suspend fun getProducts(@Query("node") node: String): List<ProductDTO>
+
+    @GET(value = "api/node/filters")
+    suspend fun getFilters(@Query("node") node: String): List<NodeDTO>
 }

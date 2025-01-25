@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentCatalogBinding
+import ru.flymary.app.model.NodeDTO
 import ru.flymary.app.values.NavTypes
 
 class CatalogFragment : Fragment() {
@@ -21,7 +24,7 @@ class CatalogFragment : Fragment() {
     val binding get() = _binding!!
 
     private lateinit var  model: CatalogModel
-    private val nodesAdapter = NodeAdapter()
+    private val nodesAdapter = NodeAdapter {nodeDTO -> onNodeClick(nodeDTO)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +56,13 @@ class CatalogFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun onNodeClick(nodeDTO: NodeDTO){
+        val bundle = Bundle()
+        bundle.putString(NavTypes.NODE_ID, nodeDTO.id)
+        bundle.putString(NavTypes.NODE_NAME, nodeDTO.name)
+        findNavController().navigate(R.id.action_catalogFragment_to_productsFragment, bundle)
     }
 
     companion object {

@@ -8,7 +8,9 @@ import ru.flymary.app.databinding.NodeElementBinding
 import ru.flymary.app.model.NodeDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
-class NodeAdapter:RecyclerView.Adapter<holder>() {
+class NodeAdapter(
+    private var onClick:(NodeDTO) -> Unit
+):RecyclerView.Adapter<holder>() {
 
     private var nodes: List<NodeDTO> = listOf()
 
@@ -31,6 +33,10 @@ class NodeAdapter:RecyclerView.Adapter<holder>() {
         holder.binding.nodeName.text = node.name
 
         Glide.with(holder.binding.nodeImage).load("${RemoteServer.nodeApi}${node.id}/image").into(holder.binding.nodeImage)
+
+        holder.binding.nodeImage.setOnClickListener {
+            onClick(node)
+        }
     }
 }
 

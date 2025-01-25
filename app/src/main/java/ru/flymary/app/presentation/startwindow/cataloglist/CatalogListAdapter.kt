@@ -11,6 +11,11 @@ import ru.flymary.app.databinding.CatalogLayoutBinding
 import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
+/**
+ * Адаптер листа каталогов
+ * функционльный тип - нажатие на каталоге,  выполняет переход в содержимое каталога в продуктовые категории
+ */
+
 class CatalogListAdapter(
     private val onClick: (CatalogDTO) -> Unit
 ):RecyclerView.Adapter<CatalogListHolder>() {
