@@ -5,6 +5,7 @@ data class ProductDTO(
     val name: String,
     val price: Double,
     val filterNode: String,
-    val imageUrl: List<String>
+    val imageUrl: List<String>,
+    val characTDOs: List<CharacDTO>
 ) {
 }

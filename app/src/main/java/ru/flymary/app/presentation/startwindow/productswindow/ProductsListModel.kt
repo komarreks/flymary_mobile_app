@@ -26,6 +26,8 @@ class ProductsListModel(var nodeId: String): ViewModel() {
             try {
                 val productsFromServer = RemoteServer.FWS.getProducts(nodeId)
 
+                remapImages(productsFromServer)
+
                 if (filters.isEmpty()){
                     _products.value = productsFromServer
                 }else{
@@ -37,12 +39,29 @@ class ProductsListModel(var nodeId: String): ViewModel() {
         }
     }
 
+    private fun remapImages(productDTOs: List<ProductDTO>){
+        for (productDTO in productDTOs){
+            for (charac in productDTO.characTDOs){
+
+                val links: MutableList<String> = mutableListOf()
+
+                charac.imageUrl.map {
+                    links.add(RemoteServer.imageApi + it)
+                }
+
+                charac.imageUrl = links
+            }
+        }
+    }
+
     private fun updateProducts(nodeId: String){
         viewModelScope.launch {
             try {
                 _filters.value = RemoteServer.FWS.getFilters(nodeId)
 
                 val productsFromServer = RemoteServer.FWS.getProducts(nodeId)
+
+                remapImages(productsFromServer)
 
                 _products.value = productsFromServer
             }catch (ex: Exception){

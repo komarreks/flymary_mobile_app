@@ -61,6 +61,10 @@ class ProductsFragment : Fragment() {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
+    /**
+     * Создаем главый фильтр по видам товара в категории
+     * с ToggleButton
+     */
     private fun createFilters(filters: List<NodeDTO>) {
         binding.filterPanel.removeAllViews()
         filterMap.clear()

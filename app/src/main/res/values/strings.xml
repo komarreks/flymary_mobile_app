@@ -5,4 +5,7 @@
     <string name="product_description">Описание товара</string>
     <string name="node_name">НАЗВАНИЕ КАТЕГОРИИ</string>
     <string name="price_label">ЦЕНА</string>
+    <string name="_60">60 гр.</string>
+    <string name="charac_empty">(характеристика)</string>
+    <string name="to_basket">В КОРЗИНУ</string>
 </resources>
