@@ -63,7 +63,7 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
                 tb.isChecked = true
                 firstButton = false
                 (holder.binding.productImage.adapter as BannerAdapter).setLinks(charac.imageUrl)
-                updateProductNameAndPrice(holder, productDTO.name, charac.name)
+                updateProductNameAndPrice(holder, productDTO.name, charac)
             }
 
             initOnClick(tb, holder)
@@ -75,14 +75,15 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
             if (countCharacButtons == 2)break
         }
 
-        if (!characs.isEmpty()){
+        if (!characs.isEmpty() && characs.size > 2){
             val tb = newToggleButton(holder, "еще...", 333)
 
         }
     }
 
-    private fun updateProductNameAndPrice(holder: Holder, productName: String, characName:String){
-        holder.binding.characName.text = " (${characName})"
+    private fun updateProductNameAndPrice(holder: Holder, productName: String, charac:CharacDTO){
+        holder.binding.characName.text = " (${charac.name})"
+        holder.binding.price.text = charac.price.toString()
     }
 
     private fun newToggleButton(holder: Holder, name:String, id: Int): ToggleButton{
@@ -125,6 +126,7 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
             if (images == null)images = listOf()
             (holder.binding.productImage.adapter as BannerAdapter).setLinks(images)
             holder.binding.characName.text = " (${tb.text})"
+            holder.binding.price.text = characsButtonsId[tb.id]?.price.toString()
         }
     }
 }
