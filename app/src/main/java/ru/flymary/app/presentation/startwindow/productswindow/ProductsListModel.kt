@@ -41,6 +41,12 @@ class ProductsListModel(var nodeId: String): ViewModel() {
 
     private fun remapImages(productDTOs: List<ProductDTO>){
         for (productDTO in productDTOs){
+            val links: MutableList<String> = mutableListOf()
+            productDTO.imageUrl.map {
+                links.add(RemoteServer.imageApi + it)
+            }
+            productDTO.imageUrl = links
+
             for (charac in productDTO.characTDOs){
 
                 val links: MutableList<String> = mutableListOf()

@@ -42,7 +42,12 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
 
         holder.binding.characsPane.removeAllViews()
 
-        createCharacsButtons(holder, productDTO.characTDOs, productDTO)
+        if (productDTO.characTDOs.isNotEmpty()){
+            createCharacsButtons(holder, productDTO.characTDOs, productDTO)
+        }else{
+            holder.binding.price.text = productDTO.price.toString()
+            (holder.binding.productImage.adapter as BannerAdapter).setLinks(productDTO.imageUrl)
+        }
 
         if (position == products.size - 1) {
             val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
