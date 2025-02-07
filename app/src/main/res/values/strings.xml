@@ -8,4 +8,5 @@
     <string name="_60">60 гр.</string>
     <string name="charac_empty">(характеристика)</string>
     <string name="to_basket">В КОРЗИНУ</string>
+    <string name="rubl">\u20bd</string>
 </resources>

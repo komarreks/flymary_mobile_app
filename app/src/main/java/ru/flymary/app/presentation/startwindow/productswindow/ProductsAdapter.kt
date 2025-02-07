@@ -1,11 +1,15 @@
 package ru.flymary.app.presentation.startwindow.productswindow
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ToggleButton
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.flymary.app.R
 import ru.flymary.app.databinding.ProductLayoutBinding
@@ -45,8 +49,9 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
         if (productDTO.characTDOs.isNotEmpty()){
             createCharacsButtons(holder, productDTO.characTDOs, productDTO)
         }else{
-            holder.binding.price.text = productDTO.price.toString()
+            holder.binding.price.text = formatPrice(productDTO.price, holder.binding.root.context)
             (holder.binding.productImage.adapter as BannerAdapter).setLinks(productDTO.imageUrl)
+            holder.binding.characName.isVisible = false
         }
 
         if (position == products.size - 1) {
@@ -88,7 +93,7 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
 
     private fun updateProductNameAndPrice(holder: Holder, productName: String, charac:CharacDTO){
         holder.binding.characName.text = " (${charac.name})"
-        holder.binding.price.text = charac.price.toString()
+        holder.binding.price.text = formatPrice(charac.price, holder.binding.root.context)
     }
 
     private fun newToggleButton(holder: Holder, name:String, id: Int): ToggleButton{
@@ -131,8 +136,19 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
             if (images == null)images = listOf()
             (holder.binding.productImage.adapter as BannerAdapter).setLinks(images)
             holder.binding.characName.text = " (${tb.text})"
-            holder.binding.price.text = characsButtonsId[tb.id]?.price.toString()
+            holder.binding.price.text =
+                characsButtonsId[tb.id]?.price?.let { it1 -> formatPrice(it1, holder.binding.root.context) }
         }
+    }
+
+    private fun formatPrice(price: Double, context: Context): String{
+        val afterDrop:Double = price-price.toInt()
+
+        if (afterDrop > 0){
+            return price.toString() + " " + context.resources.getString(R.string.rubl)
+        }
+
+        return price.toInt().toString() + " " + context.resources.getString(R.string.rubl)
     }
 }
 
