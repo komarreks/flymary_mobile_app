@@ -5,6 +5,7 @@ data class CharacDTO(
     val productId:String,
     val name: String,
     var imageUrl: MutableList<String>,
-    val price: Double
+    val price: Double,
+    val count:Double
 ) {
 }

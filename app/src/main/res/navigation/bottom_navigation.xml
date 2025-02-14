@@ -57,5 +57,22 @@
         android:id="@+id/productsFragment"
         android:name="ru.flymary.app.presentation.startwindow.productswindow.ProductsFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="ru.flymary.app.presentation.startwindow.productonewindow.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <argument
+            android:name="product_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

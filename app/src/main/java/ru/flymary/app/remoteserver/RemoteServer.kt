@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.model.NodeDTO
@@ -47,4 +48,7 @@ interface FLYMARY_WEB_SERVER{
 
     @GET(value = "api/node/filters")
     suspend fun getFilters(@Query("node") node: String): List<NodeDTO>
+
+    @GET("api/goods/{id}")
+    suspend fun getProduct(@Path("id") id: String): ProductDTO
 }

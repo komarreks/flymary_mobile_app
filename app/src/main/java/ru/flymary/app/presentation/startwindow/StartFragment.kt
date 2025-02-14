@@ -25,7 +25,7 @@ class StartFragment : Fragment() {
     val binding get() = _binding!!.root
 
     private val startModel: StartModel by viewModels()
-    private val mainBannerAdapter = BannerAdapter()
+    private val mainBannerAdapter = BannerAdapter{}
     private val catalogListAdapter = CatalogListAdapter { catalogDTO -> onCatalogClick(catalogDTO) }
 
     override fun onCreateView(

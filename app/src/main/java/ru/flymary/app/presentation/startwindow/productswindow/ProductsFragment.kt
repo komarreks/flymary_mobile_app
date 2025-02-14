@@ -10,11 +10,13 @@ import android.widget.ToggleButton
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentProductsBinding
 import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.ProductDTO
 import ru.flymary.app.values.NavTypes
 
 class ProductsFragment : Fragment() {
@@ -23,7 +25,7 @@ class ProductsFragment : Fragment() {
     private var node_name: String? = null
 
     private lateinit var model: ProductsListModel
-    private val adapter = ProductsAdapter()
+    private val adapter = ProductsAdapter {productDTO -> onClick(productDTO) }
 
     private val filterMap: MutableMap<Int, NodeDTO> = mutableMapOf()
 
@@ -113,6 +115,12 @@ class ProductsFragment : Fragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    private fun onClick(productDTO: ProductDTO){
+        val bundle = Bundle()
+        bundle.putString(NavTypes.PRODUCT_ID, productDTO.id)
+        findNavController().navigate(R.id.action_productsFragment_to_productFragment, bundle)
     }
 
     companion object {

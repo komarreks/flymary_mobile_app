@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.flymary.app.R
 import ru.flymary.app.databinding.ProductLayoutBinding
 import ru.flymary.app.model.CharacDTO
+import ru.flymary.app.model.NodeDTO
 import ru.flymary.app.model.ProductDTO
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
 
 
-class ProductsAdapter: RecyclerView.Adapter<Holder>() {
+class ProductsAdapter(private var onClick:(ProductDTO) -> Unit): RecyclerView.Adapter<Holder>() {
 
     private var products: List<ProductDTO> = listOf()
     private var characsButtonsId: MutableMap<Int, CharacDTO> = mutableMapOf()
@@ -31,7 +32,7 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val holder = Holder(ProductLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false))
-        holder.binding.productImage.adapter = BannerAdapter()
+        holder.binding.productImage.adapter = BannerAdapter {productDTO ->  onClick(productDTO)}
         return holder
     }
 
@@ -45,6 +46,8 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
         holder.binding.productName.text = productDTO.name
 
         holder.binding.characsPane.removeAllViews()
+
+        (holder.binding.productImage.adapter as BannerAdapter).setProduct(productDTO)
 
         if (productDTO.characTDOs.isNotEmpty()){
             createCharacsButtons(holder, productDTO.characTDOs, productDTO)
@@ -87,7 +90,9 @@ class ProductsAdapter: RecyclerView.Adapter<Holder>() {
 
         if (!characs.isEmpty() && characs.size > 2){
             val tb = newToggleButton(holder, "еще...", 333)
-
+            tb.setOnClickListener {
+                onClick(productDTO)
+            }
         }
     }
 
