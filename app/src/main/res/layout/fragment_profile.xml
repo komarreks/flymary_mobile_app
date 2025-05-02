@@ -1,14 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.profilewindow.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.profilewindow.ProfileFragment"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/autorize_pane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_medium"
+                android:inputType="phone"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/code"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/code"
+            app:endIconMode="clear_text"
+            android:layout_gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/codeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_medium"
+                android:inputType="phone"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/userNotFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_found_user"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/codeSendButton"
+            android:background="@drawable/black_button_shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/get_code"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registrationButton"
+            android:background="@drawable/black_button_shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/reg_button"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/profilePane"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="ВЫ НЕ АВТОРИЗОВАНЫ" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ToggleButton
+                android:id="@+id/userDataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/userpane_button_selector"
+                android:textOn="@string/contakts_label"
+                android:textOff="@string/contakts_label"/>
+
+            <ToggleButton
+                android:id="@+id/ordersButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/userpane_button_selector"
+                android:textOn="@string/orders_label"
+                android:textOff="@string/orders_label"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/userDataPane"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/fio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_bold"
+                android:gravity="center"
+                android:text="@string/fio_label" />
+
+            <TextView
+                android:id="@+id/phoneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_label" />
+
+            <TextView
+                android:id="@+id/phones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_bold"
+                android:gravity="center"
+                android:text="@string/phone" />
+            <TextView
+                android:id="@+id/adressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/adress_label"/>
+            <TextView
+                android:id="@+id/adresses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_bold"
+                android:gravity="center"
+                android:text="@string/adress_label"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ordersPane"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Тут будут отображаться ваши покупки"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

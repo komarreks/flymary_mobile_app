@@ -9,4 +9,14 @@
     <string name="charac_empty">(характеристика)</string>
     <string name="to_basket">В КОРЗИНУ</string>
     <string name="rubl">\u20bd</string>
+    <string name="phone">ТЕЛЕФОН</string>
+    <string name="not_found_user">ПОЛЬЗОВАТЕЛЬ НЕ НАЙДЕН</string>
+    <string name="get_code">ПОЛУЧИТЬ КОД</string>
+    <string name="reg_button">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="code">КОД</string>
+    <string name="fio_label">Фамилия имя отчество</string>
+    <string name="phone_label">Сохраненные телефоны</string>
+    <string name="adress_label">Адреса для доставки</string>
+    <string name="contakts_label">Контакты</string>
+    <string name="orders_label">Заказы</string>
 </resources>

@@ -37,7 +37,6 @@ class StartModel: ViewModel() {
             for (link in imageStringList){
                 links.add(RemoteServer.imageApi + link)
             }
-
             _imagesForBanner.value = links
         }
     }

@@ -4,12 +4,18 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 import ru.flymary.app.model.CatalogDTO
 import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.PhoneWithCode
 import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.Uid
+import ru.flymary.app.model.UserData
 
 const val BASE_URL = "http://10.24.10.10:8080"
 
@@ -51,4 +57,15 @@ interface FLYMARY_WEB_SERVER{
 
     @GET("api/goods/{id}")
     suspend fun getProduct(@Path("id") id: String): ProductDTO
+
+    //@Headers("Content-Type: application/json")
+    @POST("/api/users/getcode")
+    suspend fun getCode(@Body body: String): Int
+
+    //@Headers("Content-Type: application/json")
+    @POST(value = "api/users/autor")
+    suspend fun autor(@Body phoneWithCode: PhoneWithCode): Uid
+
+    @POST(value = "api/users/userdata")
+    suspend fun userData(@Body userId: Uid): UserData
 }
