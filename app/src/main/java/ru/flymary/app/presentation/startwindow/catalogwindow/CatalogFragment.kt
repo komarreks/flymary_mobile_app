@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentCatalogBinding
-import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.catalog.NodeDTO
 import ru.flymary.app.values.NavTypes
 
 class CatalogFragment : Fragment() {

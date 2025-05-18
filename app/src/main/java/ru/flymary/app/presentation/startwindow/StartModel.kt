@@ -2,11 +2,12 @@ package ru.flymary.app.presentation.startwindow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.flymary.app.model.CatalogDTO
+import ru.flymary.app.App
+import ru.flymary.app.model.basket.BasketString
+import ru.flymary.app.model.catalog.CatalogDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 class StartModel: ViewModel() {
@@ -20,6 +21,20 @@ class StartModel: ViewModel() {
     init {
         updateMainBanner()
         updateCatalogs()
+        loadBasket()
+    }
+
+    fun loadBasket(){
+        viewModelScope.launch {
+            val uid = App.LOCAL_STORAGE.getUID()
+            val lines = RemoteServer.FWS.getBasket(uid)
+
+            for(line in lines){
+                App.basket.products.add(BasketString(line.productId,line.characId,line.count,line.price,line.total))
+            }
+            val a=0
+        }
+
     }
 
     fun updateMainBanner(){

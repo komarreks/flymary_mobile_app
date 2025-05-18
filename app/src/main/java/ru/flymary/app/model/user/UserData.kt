@@ -1,4 +1,4 @@
-package ru.flymary.app.model
+package ru.flymary.app.model.user
 
 import java.lang.StringBuilder
 

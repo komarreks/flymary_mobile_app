@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.products.ProductDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 class ProductModel(private val productId:String):ViewModel() {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.flymary.app.databinding.NodeElementBinding
-import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.catalog.NodeDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 class NodeAdapter(

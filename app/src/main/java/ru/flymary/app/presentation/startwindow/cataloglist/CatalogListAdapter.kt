@@ -2,13 +2,11 @@ package ru.flymary.app.presentation.startwindow.cataloglist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ru.flymary.app.R
 import ru.flymary.app.databinding.CatalogLayoutBinding
-import ru.flymary.app.model.CatalogDTO
+import ru.flymary.app.model.catalog.CatalogDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 /**

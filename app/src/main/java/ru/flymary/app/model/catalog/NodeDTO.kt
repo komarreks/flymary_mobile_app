@@ -1,4 +1,4 @@
-package ru.flymary.app.model
+package ru.flymary.app.model.catalog
 
 data class NodeDTO(
     val id: String,

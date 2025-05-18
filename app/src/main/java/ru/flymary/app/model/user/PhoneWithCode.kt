@@ -1,4 +1,4 @@
-package ru.flymary.app.model
+package ru.flymary.app.model.user
 
 class PhoneWithCode(
     val phone: String,

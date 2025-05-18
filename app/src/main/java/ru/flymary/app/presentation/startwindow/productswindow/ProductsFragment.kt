@@ -1,6 +1,5 @@
 package ru.flymary.app.presentation.startwindow.productswindow
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +14,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentProductsBinding
-import ru.flymary.app.model.NodeDTO
-import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.catalog.NodeDTO
+import ru.flymary.app.model.products.ProductDTO
 import ru.flymary.app.values.NavTypes
 
 class ProductsFragment : Fragment() {

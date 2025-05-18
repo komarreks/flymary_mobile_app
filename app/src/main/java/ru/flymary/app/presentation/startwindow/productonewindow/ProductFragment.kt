@@ -15,11 +15,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentProductBinding
-import ru.flymary.app.databinding.FragmentProductsBinding
-import ru.flymary.app.model.CharacDTO
-import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.products.CharacDTO
+import ru.flymary.app.model.products.ProductDTO
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
-import ru.flymary.app.presentation.startwindow.productswindow.Holder
 import ru.flymary.app.values.NavTypes
 
 class ProductFragment : Fragment() {

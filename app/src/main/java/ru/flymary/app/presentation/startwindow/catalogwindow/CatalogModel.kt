@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.flymary.app.model.NodeDTO
+import ru.flymary.app.model.catalog.NodeDTO
 import ru.flymary.app.remoteserver.RemoteServer
 
 class CatalogModel(

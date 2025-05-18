@@ -6,16 +6,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.flymary.app.model.CatalogDTO
-import ru.flymary.app.model.NodeDTO
-import ru.flymary.app.model.PhoneWithCode
-import ru.flymary.app.model.ProductDTO
-import ru.flymary.app.model.Uid
-import ru.flymary.app.model.UserData
+import ru.flymary.app.model.basket.Basket
+import ru.flymary.app.model.basket.BasketString
+import ru.flymary.app.model.catalog.CatalogDTO
+import ru.flymary.app.model.catalog.NodeDTO
+import ru.flymary.app.model.user.PhoneWithCode
+import ru.flymary.app.model.products.ProductDTO
+import ru.flymary.app.model.user.Uid
+import ru.flymary.app.model.user.UserData
 
 const val BASE_URL = "http://10.24.10.10:8080"
 
@@ -68,4 +69,7 @@ interface FLYMARY_WEB_SERVER{
 
     @POST(value = "api/users/userdata")
     suspend fun userData(@Body userId: Uid): UserData
+
+    @GET(value = "api/orders/basket/{uid}")
+    suspend fun getBasket(@Path("uid") uid: String): List<BasketString>
 }

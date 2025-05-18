@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.flymary.app.model.PhoneWithCode
-import ru.flymary.app.model.Uid
-import ru.flymary.app.model.UserData
+import ru.flymary.app.model.user.PhoneWithCode
+import ru.flymary.app.model.user.Uid
+import ru.flymary.app.model.user.UserData
 import ru.flymary.app.remoteserver.RemoteServer
 
 class ProfileModel(): ViewModel() {

@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.App
 import ru.flymary.app.R
 import ru.flymary.app.databinding.FragmentStartBinding
-import ru.flymary.app.model.CatalogDTO
+import ru.flymary.app.model.catalog.CatalogDTO
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
 import ru.flymary.app.presentation.startwindow.cataloglist.CatalogListAdapter
 import ru.flymary.app.values.NavTypes

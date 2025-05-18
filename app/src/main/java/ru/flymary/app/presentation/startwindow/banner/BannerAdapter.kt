@@ -4,14 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import ru.flymary.app.R
 import ru.flymary.app.databinding.BannerLayoutBinding
-import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.products.ProductDTO
 
 class BannerAdapter(private var onClick: (ProductDTO) -> Unit?): RecyclerView.Adapter<BAVH>() {
 
     private var imagesLinks: List<String> = listOf()
-    private var productDTO:ProductDTO? = null
+    private var productDTO: ProductDTO? = null
 
     fun setLinks(links: List<String>){
         imagesLinks = links

@@ -2,20 +2,17 @@ package ru.flymary.app.presentation.startwindow.productswindow
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ToggleButton
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.flymary.app.R
 import ru.flymary.app.databinding.ProductLayoutBinding
-import ru.flymary.app.model.CharacDTO
-import ru.flymary.app.model.NodeDTO
-import ru.flymary.app.model.ProductDTO
+import ru.flymary.app.model.products.CharacDTO
+import ru.flymary.app.model.products.ProductDTO
 import ru.flymary.app.presentation.startwindow.banner.BannerAdapter
 
 
@@ -96,7 +93,7 @@ class ProductsAdapter(private var onClick:(ProductDTO) -> Unit): RecyclerView.Ad
         }
     }
 
-    private fun updateProductNameAndPrice(holder: Holder, productName: String, charac:CharacDTO){
+    private fun updateProductNameAndPrice(holder: Holder, productName: String, charac: CharacDTO){
         holder.binding.characName.text = " (${charac.name})"
         holder.binding.price.text = formatPrice(charac.price, holder.binding.root.context)
     }

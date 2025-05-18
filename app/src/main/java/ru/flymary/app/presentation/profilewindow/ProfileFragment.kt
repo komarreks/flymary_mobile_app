@@ -15,10 +15,8 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flymary.app.App
-import ru.flymary.app.R
-import ru.flymary.app.databinding.FragmentProductsBinding
 import ru.flymary.app.databinding.FragmentProfileBinding
-import ru.flymary.app.model.PhoneWithCode
+import ru.flymary.app.model.user.PhoneWithCode
 import java.security.MessageDigest
 import java.time.LocalDateTime
 
